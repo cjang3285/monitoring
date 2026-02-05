@@ -29,6 +29,12 @@ storage_config:
 common:
   path_prefix: /loki
   replication_factor: 1
+  ring:
+    kvstore:
+      store: inmemory
+
+memberlist:
+  node_name: loki-standalone
 
 server:
   http_listen_port: 3100
