@@ -207,7 +207,7 @@ Promtail이 이것에 접근하면:
 - 알람 설정 (추후)
 - 대시보드 공유
 
-**접속:** http://localhost:3000
+**접속:** http://localhost:3001
 - 기본 아이디: admin
 - 기본 비밀번호: `.env` 파일에서 설정 (다음 섹션 참고)
 
@@ -450,7 +450,7 @@ docker-compose down -v
 ### Grafana (대시보드)
 
 ```
-URL: http://localhost:3000
+URL: http://localhost:3001
 아이디: admin
 비밀번호: .env 파일의 GRAFANA_ADMIN_PASSWORD
 ```
@@ -601,7 +601,7 @@ docker system prune -a
 
 **증상:**
 ```
-http://localhost:3000 접근 불가
+http://localhost:3001 접근 불가
 ```
 
 **해결:**
@@ -613,14 +613,14 @@ docker-compose ps grafana
 docker-compose logs grafana
 
 # 3. 포트 충돌 확인
-netstat -tuln | grep 3000
+netstat -tuln | grep 3001
 
 # 4. Grafana 재시작
 docker-compose restart grafana
 
 # 5. 포트가 이미 사용 중인 경우
 # docker-compose.yml에서 포트 변경
-# ports: - "3001:3000"
+# ports: - "3002:3000"
 ```
 
 ### 6. 메모리 부족
