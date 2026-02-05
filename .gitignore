@@ -1,0 +1,27 @@
+# 환경 변수 파일 (민감한 정보 포함)
+.env
+.env.local
+.env.*.local
+
+# 시스템 파일
+.DS_Store
+.swp
+.swo
+*~
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker volumes (로컬 데이터, 매우 큼)
+volumes/loki-data/*
+volumes/prometheus-data/*
+volumes/grafana-data/*
+
+# 임시 파일
+tmp/
+temp/
+*.tmp
