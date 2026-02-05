@@ -29,12 +29,12 @@ scrape_configs:
 
   # Docker 컨테이너 로그 수집
   - job_name: docker_logs
-    docker: {}
-    relabel_configs:
-      - source_labels: ['__meta_docker_container_name']
-        target_label: 'container'
-      - source_labels: ['__meta_docker_container_image_name']
-        target_label: 'image'
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: docker
+          __path__: /var/lib/docker/containers/*/*-json.log
 
   # 시스템 로그
   - job_name: syslog
