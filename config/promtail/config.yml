@@ -1,0 +1,46 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  # PM2 블로그 로그 수집
+  - job_name: blog_pm2_logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: blog_pm2
+          __path__: /var/log/pm2/blog/*.log
+
+  # Python 코드 실행 로그 수집
+  - job_name: python_logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: python_code
+          __path__: /var/log/python/*.log
+
+  # Docker 컨테이너 로그 수집
+  - job_name: docker_logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: docker
+          __path__: /var/lib/docker/containers/*/*-json.log
+
+  # 시스템 로그
+  - job_name: syslog
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: syslog
+          __path__: /var/log/syslog
