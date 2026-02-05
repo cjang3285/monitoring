@@ -12,6 +12,7 @@ services:
       - '--storage.tsdb.path=/prometheus'
     networks:
       - monitoring
+    restart: always
 
   node-exporter:
     image: prom/node-exporter:latest
@@ -28,6 +29,7 @@ services:
       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
     networks:
       - monitoring
+    restart: always
 
   loki:
     image: grafana/loki:latest
@@ -40,6 +42,7 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     networks:
       - monitoring
+    restart: always
 
   promtail:
     image: grafana/promtail:latest
@@ -55,6 +58,7 @@ services:
       - monitoring
     depends_on:
       - loki
+    restart: always
 
   grafana:
     image: grafana/grafana:latest
@@ -72,6 +76,7 @@ services:
     depends_on:
       - prometheus
       - loki
+    restart: always
 
 networks:
   monitoring:
