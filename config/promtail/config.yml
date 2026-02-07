@@ -45,41 +45,6 @@ scrape_configs:
           job: syslog
           __path__: /var/log/syslog
           
-  # trivy 로그       
-  - job_name: trivy
-  static_configs:
-    - targets:
-        - localhost
-      labels:
-        job: trivy
-        __path__: /var/log/trivy/*.json
-
-  pipeline_stages:
-    - json:
-        expressions:
-          results: Results
-
-    - json:
-        source: results
-        expressions:
-          target: Target
-          vulns: Vulnerabilities
-
-    - json:
-        source: vulns
-        expressions:
-          vuln_id: VulnerabilityID
-          severity: Severity
-          pkg: PkgName
-          installed: InstalledVersion
-          fixed: FixedVersion
-          title: Title
-
-    - labels:
-        severity:
-        pkg:
-        target:
-        vuln_id:
 
       
 
