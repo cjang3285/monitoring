@@ -44,3 +44,12 @@ scrape_configs:
         labels:
           job: syslog
           __path__: /var/log/syslog
+  - job_name: trivy
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: trivy
+          __path__: /var/log/trivy/*.log
+
+  
