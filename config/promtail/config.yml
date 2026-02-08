@@ -39,26 +39,26 @@ scrape_configs:
           source: content
 
 # LearningCollector 코드 실행 로그 수집
-- job_name: LearningCollector_logs
-  static_configs:
-    - targets:
-        - localhost
-      labels:
-        job: LearningCollector
-        __path__: /app/LearningCollector/log/promtail_feed.jsonl
+  - job_name: LearningCollector_logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: LearningCollector
+          __path__: /app/LearningCollector/log/promtail_feed.jsonl
 
-  pipeline_stages:
-    - json:
-        expressions:
+    pipeline_stages:
+      - json:
+          expressions:
+            level:
+            event:
+            component:
+            api:
+      - labels:
           level:
           event:
           component:
           api:
-    - labels:
-        level:
-        event:
-        component:
-        api:
 
 
           
