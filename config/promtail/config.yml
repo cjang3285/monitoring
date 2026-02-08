@@ -9,21 +9,19 @@ clients:
   - url: http://loki:3100/loki/api/v1/push
 
 scrape_configs:
-  # PM2 블로그 로그 수집 - 백엔드
+
   - job_name: blog-backend
     static_configs:
-      - targets:
-          - localhost
+      - targets: [localhost]
         labels:
           job: blog
           app: backend
-          __path__: /app/my-blog/frontend/logs/*.log
+          __path__: /app/my-blog/backend/logs/*.log
 
-  # PM2 블로그 로그 수집 - 프론트엔드
+
   - job_name: blog-frontend
     static_configs:
-      - targets:
-          - localhost
+      - targets: [localhost]
         labels:
           job: blog
           app: frontend
@@ -38,11 +36,10 @@ scrape_configs:
       - output:
           source: content
 
-  # LearningCollector 코드 실행 로그 수집
+
   - job_name: LearningCollector_logs
     static_configs:
-      - targets:
-          - localhost
+      - targets: [localhost]
         labels:
           job: LearningCollector
           __path__: /app/LearningCollector/log/promtail_feed.jsonl
@@ -60,20 +57,18 @@ scrape_configs:
           component:
           api:
 
-  # Docker 컨테이너 로그 수집
+
   - job_name: docker_logs
     static_configs:
-      - targets:
-          - localhost
+      - targets: [localhost]
         labels:
           job: docker
           __path__: /var/log/trivy/*.log;/var/log/trivy/*.json
 
-  # 시스템 로그
+
   - job_name: syslog
     static_configs:
-      - targets:
-          - localhost
+      - targets: [localhost]
         labels:
           job: syslog
           __path__: /var/log/syslog
