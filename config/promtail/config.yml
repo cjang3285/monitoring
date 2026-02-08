@@ -45,7 +45,7 @@ scrape_configs:
           - localhost
         labels:
           job: LearningCollector
-          __path__: __path__: /home/jcw/LearningCollector_v1.0/log/promtail_feed.jsonl
+          __path__: /home/jcw/LearningCollector_v1.0/log/promtail_feed.jsonl
           
   # Docker 컨테이너 로그 수집
   - job_name: docker_logs
