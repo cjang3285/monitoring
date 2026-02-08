@@ -1,0 +1,12 @@
+positions:
+  /app/LearningCollector/log/promtail_feed.jsonl: "61109"
+  /app/my-blog/backend/logs/combined.log: "1911895"
+  /app/my-blog/backend/logs/err.log: "1685348"
+  /app/my-blog/backend/logs/out.log: "226547"
+  /app/my-blog/frontend/logs/combined.log: "1839851"
+  /app/my-blog/frontend/logs/err.log: "97085"
+  /app/my-blog/frontend/logs/out.log: "1742766"
+  /var/log/syslog: "8158710"
+  /var/log/trivy/docker-2026-02-07.log: "100239"
+  /var/log/trivy/host-2026-02-07.log: "0"
+  /var/log/trivy/test.log: "15"

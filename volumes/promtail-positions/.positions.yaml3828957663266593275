@@ -1,0 +1,12 @@
+positions:
+  ? /var/lib/docker/containers/3ae92aef59f04b718c9fe7642102ffc65b802c5fb8b7127e8e98f978057880d0/3ae92aef59f04b718c9fe7642102ffc65b802c5fb8b7127e8e98f978057880d0-json.log
+  : "129163"
+  ? /var/lib/docker/containers/8828cdd61930ff874169da07d89fa0601147414bbfe15e32d90d99afa56fc2f5/8828cdd61930ff874169da07d89fa0601147414bbfe15e32d90d99afa56fc2f5-json.log
+  : "280043"
+  ? /var/lib/docker/containers/788667b55ecf0dca90de51c0975e6d53f2ad1d0f8af0e63194a00823d2a7f88e/788667b55ecf0dca90de51c0975e6d53f2ad1d0f8af0e63194a00823d2a7f88e-json.log
+  : "27600"
+  ? /var/lib/docker/containers/b38c53e295e1024f3eab034a0fbfb163969f047f6456efe67e270e9d442c6e1f/b38c53e295e1024f3eab034a0fbfb163969f047f6456efe67e270e9d442c6e1f-json.log
+  : "19041"
+  ? /var/lib/docker/containers/ec56921cbad38a442ef0d6b643af1f7a74df72aac92ed3b9c275e4f5a75f4427/ec56921cbad38a442ef0d6b643af1f7a74df72aac92ed3b9c275e4f5a75f4427-json.log
+  : "31755"
+  /var/log/syslog: "26909982"
