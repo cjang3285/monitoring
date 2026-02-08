@@ -53,8 +53,11 @@ services:
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - ./volumes/promtail-positions:/tmp
-      - /home/jcw/LearningCollector_v1.0/log:/app/LearningCollector/log:ro
       - ./config/promtail/config.yml:/etc/promtail/config.yml
+      # 아래는 호스트fs의 앱의 로그 폴더 마운트
+      - /home/jcw/LearningCollector_v1.0/log:/app/LearningCollector/log:ro
+      - /home/jcw/my-blog/backend/logs:/app/my-blog/backend/logs:ro
+      - /home/jcw/my-blog/frontend/logs:/app/my-blog/frontend/logs:ro
     command: -config.file=/etc/promtail/config.yml
     networks:
       - monitoring
