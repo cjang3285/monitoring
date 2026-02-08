@@ -10,23 +10,43 @@ clients:
 
 scrape_configs:
   # PM2 블로그 로그 수집
-  - job_name: blog_pm2_logs
+  # 백엔드 로그
+  - job_name: blog-backend
+    static_configs:
+      - targets: [localhost]
+        labels:
+          job: blog
+          app: backend
+          __path__: /home/user/my-blog/backend/logs/*.log
+
+  # 프론트엔드 로그
+  - job_name: blog-frontend
+    static_configs:
+      - targets: [localhost]
+        labels:
+          job: blog
+          app: frontend
+          __path__: /home/user/my-blog/frontend/logs/*.log
+
+    # PM2 타임스탬프 파싱
+    pipeline_stages:
+      - regex:
+          expression: '^(?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+-]\d{4}) \| (?P<content>.*)'
+      - timestamp:
+          source: timestamp
+          format: "2006-01-02 15:04:05 -0700"
+      - output:
+          source: content
+
+  # LearningCollector 코드 실행 로그 수집
+  - job_name: LearningCollector_logs
     static_configs:
       - targets:
           - localhost
         labels:
-          job: blog_pm2
-          __path__: /var/log/pm2/blog/*.log
-
-  # Python 코드 실행 로그 수집
-  - job_name: python_logs
-    static_configs:
-      - targets:
-          - localhost
-        labels:
-          job: python_code
-          __path__: /var/log/python/*.log
-
+          job: LearningCollector
+          __path__: __path__: /home/jcw/LearningCollector_v1.0/log/promtail_feed.jsonl
+          
   # Docker 컨테이너 로그 수집
   - job_name: docker_logs
     static_configs:
