@@ -17,7 +17,7 @@ scrape_configs:
         labels:
           job: blog
           app: backend
-          __path__: /home/user/my-blog/backend/logs/*.log
+          __path__: /app/my-blog/frontend/logs/*.log
 
   # 프론트엔드 로그
   - job_name: blog-frontend
@@ -26,7 +26,7 @@ scrape_configs:
         labels:
           job: blog
           app: frontend
-          __path__: /home/user/my-blog/frontend/logs/*.log
+          __path__: /app/my-blog/frontend/logs/*.log
 
     # PM2 타임스탬프 파싱
     pipeline_stages:
@@ -45,7 +45,7 @@ scrape_configs:
           - localhost
         labels:
           job: LearningCollector
-          __path__: /home/jcw/LearningCollector_v1.0/log/promtail_feed.jsonl
+          __path__: /app/LearningCollector/log/promtail_feed.jsonl
           
   # Docker 컨테이너 로그 수집
   - job_name: docker_logs
